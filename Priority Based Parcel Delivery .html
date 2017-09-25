@@ -1,0 +1,211 @@
+<html>
+<head>
+<style>
+	.grow:hover{
+		
+		transform: scale(1.3);
+		transition-timing-function: ease;
+		transition-duration: 0.2s;
+		
+	}
+	#counter{
+		height: 50px;
+		width: 150px;
+		position: absolute;
+		top: 300px;
+		background-color:blue;
+		color: aliceblue;
+		border-color: black;
+		border-style:dashed;
+		padding-top: 30px;
+		text-align: center;
+		font-size: 20px;
+	}
+	#Destination{
+		height: 50px;
+		width: 150px;
+		position: absolute;
+		top: 300px;
+		left:980px;
+		background-color:green;
+		color: aliceblue;
+		border-color: black;
+		border-style:dashed;
+		padding-top: 30px;
+		text-align: center;
+		font-size: 20px;
+	}
+	#addparcel{
+		position: absolute;
+		top:400px;
+		font-size: 20px;
+	}
+		
+	
+	.parcel{
+		margin-bottom: 10px;
+		position:absolute;
+		left:180px;
+		top:270px;
+		height:50px;
+		width:100px;
+		background-color:red;
+		color:white;
+		border-style:double;
+		text-align: center;
+		 line-height: 45px;
+	}
+	
+	#text1{
+		position: absolute;
+		border-style:dotted;
+				width: 1000px;
+		left: 170px;
+		
+		
+		text-align: center;
+		
+		
+	}
+#arrive{
+		position: absolute;
+		border-style:dotted;
+				width: 100px;
+		left: 850px;
+		
+		top:240px;
+		text-align: center;
+		
+		
+	}
+	
+
+	
+	#q{
+		position: absolute;
+		border-style:dotted;
+				width: 100px;
+		left: 170px;
+		
+		top:240px;
+		text-align: center;
+		
+		
+	}
+	#move1{
+	position: absolute;
+					width: 200px;
+		left: 540px;
+		height:30px;
+		top:100px;
+		border:true;
+		border-style:double;
+				text-align: center;
+	}
+
+</style>	
+	
+<script src="jquery-2.2.1.js"></script>
+
+
+
+
+</head>
+ 
+	<body style="background-color:blanchedalmond;">
+		<p id = "text1">Priority Scheduling .Here Lower Number Indicates Higher Priority Of Parcel.!!:)</p>
+	
+	<div id="counter">Courier Service</div>
+	<div id="Destination">Destination</div>
+	<div id="q">Depart</div>
+	<div id="arrive">Arrive</div>
+		<button type="button" id="addparcel" onClick="addParcel()">Add parcel</button>
+		
+		<button type="button" id="move1" class="grow">Deliver</button>
+		<!--<button type="reset" id="button5">Reset</button>-->
+	</body>
+
+
+<script>
+
+parcel=0;
+	count = 0;
+	var pr = [];
+function addParcel(){
+	$(document).ready(function(){
+	
+		if(parcel==0){
+			//
+	$("#counter").after('<div id="customer'+count+'" class="parcel grow">Person</div>');
+    	//var customer = document.createElement('div');
+       // customer.IdName="customer";		
+			var x;
+			//count ++;
+    var p =prompt("Please enter your priority of parcel. \n The lower number indicates higher Priority","Enter between 1 to 100");
+    if (p!=null){
+      // x="Hello " + name + "! How are you today?";
+    //  alert(x);
+	
+   }
+   else{
+   //document.getElementById("customer").innerHTML=1;
+   p = 1;
+   
+}	
+		    i=$("#customer"+count).css("top");
+		        parcel++;
+		}
+					//$("#customer").after('<div id="customer" class="person">P</div>');
+
+		else{
+		var x;
+    var p =prompt("Please enter your priority of parcel.\n The lower number indicates higher Priority","Enter between 1 to 100");
+    if (p!=null){
+      // x="Hello " + name + "! How are you today?";
+    //  alert(x);
+	//document.getElementById("customer").innerHTML=p;
+   }
+   else{
+   p=1;
+  // document.getElementById("customer").innerHTML=1;
+}
+
+			//$("#customer").after('<div id="customer" class="person">P</div>');
+		//	$("#customer"+(count-1)).clone().appendTo("body");
+$("#counter").after('<div id="customer'+count+'" class="parcel grow">Person</div>');
+						$("#customer"+(count)).css("top",parseInt(i,10)+70+"px");
+                          
+			i=$("#customer"+(count)).css("top");			
+		parcel++;
+		}
+		
+		document.getElementById("customer"+count).innerHTML=p;
+		pr[count] = p;
+   count ++;
+	
+	});
+
+}
+
+
+	
+
+
+
+$("#move1").click(function ()
+{ var i=0;
+  if(count==0)
+  { alert("No parcel to Deliver!!!!!!!!");
+  }
+  for(i=0;i<count;i++)
+  {
+  // alert(pr[i]);
+$("#customer"+i).animate({
+  left: '860px'
+} ,pr[i] * 100 );
+  }
+
+}
+);
+</script>
+</html>
